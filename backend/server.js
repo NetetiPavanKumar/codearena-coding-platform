@@ -427,7 +427,7 @@ app.post("/submitcode/:ids",authMiddleware,async(req,res)=>{
             actual:output,
             status:
             // output===test.output.trim()
-            output.trim() === test.output.toString().trim();
+            output.trim() === test.output.toString().trim()
             ?
             "Accepted"
             :
