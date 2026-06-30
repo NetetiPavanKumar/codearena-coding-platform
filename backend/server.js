@@ -5,15 +5,16 @@ const cors=require("cors");
 const jwt=require("jsonwebtoken");
 const cookieParser=require("cookie-parser");
 const runCode=require("./judge0.js");
+require("dotenv").config();
 
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT_NO,()=>{
 console.log("Server Started....");
 });
 
 
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:process.env.FRONTEND_URL,
     credentials:true,
 }))
 app.use(express.json())
@@ -329,7 +330,9 @@ app.post("/login",async(req,res)=>{
     },"Pavan Kumar",{expiresIn:"1d"})
     res.cookie("token",token,{
         httpOnly:true,
-        maxAge:7*24*60*60*1000,
+        secure: true,
+        sameSite: "none",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.json("User Exist");
     }
@@ -345,6 +348,8 @@ app.get("/me",authMiddleware,(req,res)=>{
 app.post("/logout",(req,res)=>{
     res.clearCookie("token",{
         httpOnly:true,
+        secure: true,
+        sameSite: "none",
     });
     res.json({
         msg:"Logged Out Successfully",
