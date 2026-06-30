@@ -1,0 +1,33 @@
+#title-are{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+#title-area{
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+  cursor: pointer;
+
+}
+#app-icon{
+  color:green;
+}
+#app-name{
+  font-family: Arial, Helvetica, sans-serif;
+}
+#profile-area{
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  justify-content: flex-end;
+  align-items: center;
+  font-family:Arial, Helvetica, sans-serif;
+
+}
+.role-options{
+  width:80px;
+  height: 30px;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+}

@@ -1,0 +1,177 @@
+#problem-inp{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+    height: calc(100vh - 80px);
+}
+#text-area {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    outline: none;
+}
+
+#small-text-area{
+    width: 100%;
+    height: 60%;
+    resize: none;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    outline: none;
+}
+
+
+#problem-panel,
+#editor-panel {
+    overflow-y:scroll;
+}
+
+#problem-panel {
+    border-right: 1px solid #ddd;
+}
+.examples{
+    font-weight:600;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.exam{
+    background-color: rgba(214, 214, 225, 0.874);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+
+.editor-panel{
+    display:flex;
+    flex-direction:column;
+}
+
+
+#editor-head{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    background-color:black;
+    color:white;
+    align-items:center;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+.run-code{
+  border-radius: 10px;
+  background-color: rgb(15, 95, 15);
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+}
+.run-code:active{
+    background-color: rgb(15, 95, 100);
+}
+
+#lang{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#output-box{
+    height:40%;
+    background:#111;
+    color:white;
+    padding:10px;
+    overflow-y:auto;
+    border-top:1px solid gray;
+}
+#output-box pre{
+    white-space:pre-wrap;
+}
+.output-boxes{
+    background-color: rgb(157, 186, 157);
+    border: 2px green solid;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    color: black;
+}
+#heading{
+    color: rgb(3, 91, 3);
+}
+.failed-box{
+    background-color: rgb(194, 96, 96);
+    border: 1px red solid;
+    padding: 10px;
+    margin:5px;
+    color: white;
+    border-radius: 5px;
+}
+#heading-failed{
+    color: rgb(136, 5, 5);
+}
+
+#output-cross{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.editor-large{
+    width:100%;
+    height:100%;
+}
+
+.editor-small{
+    width:100%;
+    height:60%;
+    background-color: black;
+}
+
+/* #save{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: greenyellow;
+    width: auto;
+    color: black;
+} */
+
+#save{
+    display:flex;
+    justify-content: center;
+    background-color: #1f883d;
+    color:white;
+    padding:6px 14px;
+    border-radius:6px;
+    font-size:14px;
+    font-family:monospace;
+    margin-left:20px;
+    /* animation: fadeIn 2s ease-in-out; */
+}
+
+#not-save{
+    background-color: #111;
+}
+
+/* 
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(-5px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+} */

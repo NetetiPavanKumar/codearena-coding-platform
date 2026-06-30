@@ -1,0 +1,156 @@
+#search-bar{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+    margin: 20px;
+
+}
+#input-search{
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+    border: 2px black solid;
+    outline-color: rgb(15, 95, 15);
+}
+#headers{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-left: 30px;
+}
+#tble{
+    width: 100%;
+    text-align: left;
+    padding-left: 40px;
+}
+#tble {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,td {
+    padding: 10px;
+    border-bottom: 1px solid rgb(237, 231, 231);
+}
+thead tr:hover{
+    background-color: white;
+}
+tr:hover{
+    background-color: rgba(199, 210, 223, 0.272);
+}
+#problems{
+    background-color: rgb(222, 226, 231);
+    padding: 10px;
+    border-radius: 5px;
+}
+#set-probs{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.practice-buttons{
+    background-color: rgba(199, 210, 223, 0.272);
+    color: black;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.practice-buttons:hover{
+    background-color: rgb(222, 226, 231);
+}
+.bg-green{
+    background-color: rgb(15, 95, 15);
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: white;
+}
+#pages{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    /* justify-content: flex-end; */
+    padding:10px;
+
+}
+#page-btns{
+    margin:1px;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+#show-page-btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.active-btn{
+    margin:1px;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+
+}
+.block-btn{
+    margin:1px;
+    padding: 4px 8px;
+    cursor: not-allowed;
+    opacity: 0.5;
+    border-radius: 3px;
+
+}
+.active-green{
+    background-color: rgb(15, 95, 15);
+    border-radius: 3px;
+    color: white;
+
+}
+
+#p1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#p2{
+    display: flex;
+    flex-direction: column;
+}
+#p3{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+}
+#add-p3{
+    background-color: rgb(15, 95, 15);
+    margin:15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+#add-p3:active{
+    background-color: rgb(2, 83, 2);
+}
+.edit-btn{
+    padding: 5px 10px;
+    background-color: rgb(15, 95, 15);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.edit-btn:active{
+    background-color: rgb(2, 58, 2);
+}
+.delete-btn{
+    padding: 5px 10px;
+    background-color: rgb(128, 5, 5);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.delete-btn:active{
+    background-color: rgb(70, 3, 3);
+}

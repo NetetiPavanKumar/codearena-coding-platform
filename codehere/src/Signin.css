@@ -1,0 +1,65 @@
+#signin-box{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    align-items: center;
+    background-color: rgb(15, 95, 15);
+    color: white;
+    border-radius: 5px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: flex-start;
+    background-color: white;
+    color: black;
+    padding: 30px 50px;
+    margin-bottom: 20px;
+    width:350px;
+    border-radius: 10px;
+}
+.input-box{
+    padding:15px 10px;
+    border-radius: 5px;
+    width: 350px;
+    font-size: 16px;
+}
+#forget{
+    display: flex;
+    /* grid-template-columns: 1fr 1fr; */
+    flex-direction: row;
+    /* border: 2px red solid; */
+    width: 380px;
+    justify-content: flex-end;
+}
+#signin-btn-full{
+    background-color: rgb(15, 95, 15);
+    width: 370px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.dont-have{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width: 350px;
+}
+#invalid{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 380px;
+}
+.inval{
+    display: none;
+}
+
+.err-class-1{
+    color: #dc2626;
+    font-size: 0.85rem;
+    font-family:cursive;
+}
