@@ -3,6 +3,14 @@
 CodeArena is a full-stack online judge platform inspired by coding platforms like LeetCode.  
 It allows users to solve programming problems, write and execute code, submit solutions, track progress, and manage problems through an admin dashboard.
 
+---
+
+## ⚙️ Live Demo
+
+- **Project Link**:[https://codearena-a-coding-practice-platform.onrender.com/](https://codearena-a-coding-practice-platform.onrender.com/)
+
+---
+
 ## Features ✨
 
 ### 👨‍💻 User Features
