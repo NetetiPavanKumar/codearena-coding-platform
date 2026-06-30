@@ -60,12 +60,13 @@ It allows users to solve programming problems, write and execute code, submit so
 
 ## Project Structure 📁
 
-
+```text
 CodeArena
 │
 ├── codehere # Frontend (React)
 │
 └── backend # Backend (Node + Express)
+```
 
 
 ## Authentication 🔐
