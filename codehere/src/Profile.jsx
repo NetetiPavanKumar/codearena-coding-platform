@@ -6,13 +6,23 @@ import api from "./api";
 export default function Profile({isauth,setAuth,currRole,setCurrRole,role}){
 
     const [stats,setStats]=useState("");
+    const [loading,setLoading]=useState(true);
     async function getStats(){
+        try{
+            setLoading(true);
         // let response=await axios.get("http://localhost:3000/userstats",{
         let response=await api.get("/userstats",{
             withCredentials:true,
         })
         console.log("Stats :",response.data)
         setStats(response.data);
+    }
+    catch(err){
+        console.log("Errror Occured while fetching user statistics",err)
+    }
+    finally{
+        setLoading(false)
+    }
     }
 
 
@@ -44,6 +54,16 @@ export default function Profile({isauth,setAuth,currRole,setCurrRole,role}){
     useEffect(()=>{
         getStats();
     },[])
+
+    if(loading){
+        return (
+            <div className="loading-screen">
+                <div className="loader"></div>
+                <p>Loading...</p>
+            </div>
+            )
+    }
+    
     return(
         <>
             <Header isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role}/>

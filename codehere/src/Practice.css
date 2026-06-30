@@ -154,3 +154,14 @@ tr:hover{
 .delete-btn:active{
     background-color: rgb(70, 3, 3);
 }
+
+.no-data {
+  padding: 30px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ef4444;
+  background: #fef2f2;
+  border-radius: 8px;
+  margin: 10px;
+}

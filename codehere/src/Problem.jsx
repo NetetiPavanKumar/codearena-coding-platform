@@ -18,8 +18,11 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
     const [showOutput,setShowOutput]=useState(false);
     const throttelleRef=useRef();
     const [showFlash,setShowFlash]=useState(false);
+    const [loading,setLoading]=useState(true);
 
     async function findMatched(){
+        try{
+            setLoading(true);
         // let response=await axios.get(`http://localhost:3000/problems/${id}`,{
         let response=await api.get(`/problems/${id}`,{
             withCredentials:true,
@@ -29,6 +32,10 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
         setMatched(matched);
         setCode(matched.JavaScript || matched.p_driverCodes[0].fntemp);
     }
+    finally{
+        setLoading(false);
+    }
+}
 
     async function setDraft(lang){
         await findMatched();
@@ -138,6 +145,16 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
     useEffect(()=>{
         throttelleRef.current=throttelle(saveDraft,5000);
     },[])
+
+    if(loading){
+        return (
+            <div className="loading-screen">
+                <div className="loader"></div>
+                <p>Loading...</p>
+            </div>
+            )
+    }
+    
     return(
         <>
             <Header isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />

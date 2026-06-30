@@ -14,7 +14,10 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
     let page_btns=[];
     const [probs,setProbs]=useState([]);
     const [probs_,setProbs_]=useState([]);
+    const [loading,setLoading]=useState(true);
         async function getProblems(){
+            try{
+            setLoading(true);
                 // let response=await axios.get("http://localhost:3000/problems",{
                 let response=await api.get("/problems",{
                     withCredentials:true,
@@ -25,6 +28,13 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
                 setProbs_(res);
                 console.log("From Start.jsx");
             }
+            catch(err){
+                console.log("Error Occured while fetching problems",err);
+            }
+            finally{
+                setLoading(false);
+            }
+        }
             useEffect(()=>{
                 getProblems();
             },[])
@@ -151,6 +161,16 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
         console.log("from practice.jsx useeffect")
         paginate(probs,curr_page,5);
     },[probs])
+
+    if(loading){
+        return (
+            <div className="loading-screen">
+                <div className="loader"></div>
+                <p>Loading...</p>
+            </div>
+            )
+    }
+
     return(
         <>
             <Header isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role}/>
@@ -221,7 +241,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
                             <td>jdnsl</td>
                             <td>jdnsl</td>
                             <td>jdnsl</td> */}
-                            {dup_probs.map((prob,ind)=>{
+                            {dup_probs.length!=0?dup_probs.map((prob,ind)=>{
                                 return(<tr key={prob.p_id}>
                                 <td>{prob.status || "False"}</td>
                                 <td>{<span style={{cursor:"pointer",color:"rgb(15, 95, 15)"}} onClick={(e)=>{
@@ -237,7 +257,13 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
                                     deleteProblem(prob.p_id);
                                 }}>Delete</button></td></>):""}
                                 </tr>)
-                            })}
+                            }):(
+                            <tr>
+                                <td colSpan="5">
+                                    <div className="no-data">No Problems Found</div>
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

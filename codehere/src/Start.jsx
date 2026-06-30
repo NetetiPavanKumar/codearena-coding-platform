@@ -10,14 +10,17 @@ import { useState,useEffect } from "react"
 import EditProblem from "./EditProblem.jsx"
 import axios from "axios"
 import api from "./api.js"
+import "./Start.css"
 
 export default function Start(){
     const [isauth,setAuth]=useState(false);
     const [currRole,setCurrRole]=useState("");
     const [role,setRole]=useState("");
+    const [loading,setLoading]=useState(true);
 
           async function authenticated(){
               try{
+                setLoading(true);
             //   let response=await axios.get("http://localhost:3000/me",{
               let response=await api.get("/me",{
                   withCredentials:true,
@@ -33,11 +36,22 @@ export default function Start(){
               console.log("Error from Header",err)
                   setAuth(false)
               }
+              finally{
+                setLoading(false);
+              }
           }
           useEffect(()=>{
               console.log("Rendering from Header")
               authenticated();
           },[])
+    if(loading){
+        return (
+            <div className="loading-screen">
+                <div className="loader"></div>
+                <p>Loading...</p>
+            </div>
+            )
+    }
     return(
         <BrowserRouter>
             <Routes>
@@ -46,7 +60,7 @@ export default function Start(){
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/profile/" element={isauth?<Profile isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role}/>:<Signin setAuth={setAuth} />} />
                 <Route path="/problems" element={isauth?<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />:<Signin setAuth={setAuth} />} />
-                <Route path="/problems/:id" element={isauth?<Problem i  sauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />:<Signin setAuth={setAuth} />} />
+                <Route path="/problems/:id" element={isauth?<Problem isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />:<Signin setAuth={setAuth} />} />
                 <Route path="/addproblem" element={isauth?(role==="Admin"?<AddProblem />:<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />):<Signin setAuth={setAuth} />} />
                 <Route path="/editproblem/:id" element={isauth?(role==="Admin"?<EditProblem />:<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />):<Signin setAuth={setAuth} />} />
             </Routes>
