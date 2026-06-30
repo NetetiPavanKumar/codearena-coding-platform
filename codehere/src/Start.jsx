@@ -9,6 +9,7 @@ import AddProblem from "./AddProblem.jsx"
 import { useState,useEffect } from "react"
 import EditProblem from "./EditProblem.jsx"
 import axios from "axios"
+import api from "./api.js"
 
 export default function Start(){
     const [isauth,setAuth]=useState(false);
@@ -17,7 +18,8 @@ export default function Start(){
 
           async function authenticated(){
               try{
-              let response=await axios.get("http://localhost:3000/me",{
+            //   let response=await axios.get("http://localhost:3000/me",{
+              let response=await api.get("/me",{
                   withCredentials:true,
               });
               console.log("Setting True", response)

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import api from "./api.js";
 
 export default function EditProblem(){
     const params=useParams()
@@ -20,7 +21,9 @@ export default function EditProblem(){
 
 
     async function findProblem(){
-        let response=await axios.get(`http://localhost:3000/problems/${prob_id}`,{
+        // let response=await axios.get(`http://localhost:3000/problems/${prob_id}`,{
+        let response=await api.get(`/problems/${prob_id}`,{
+
             withCredentials:true,
         });
         let matched=response.data.data;
@@ -39,7 +42,8 @@ export default function EditProblem(){
 
     async function updateProblem(){
         try{
-        let response=await axios.put(`http://localhost:3000/updateproblem/${prob_id}`,{
+        // let response=await axios.put(`http://localhost:3000/updateproblem/${prob_id}`,{
+        let response=await api.put(`/updateproblem/${prob_id}`,{
             p_prob:pr,
             p_title:title,
             p_category:category,
@@ -213,7 +217,7 @@ Only one valid answer exists.`}></textarea>
                                 }}/>
                             </div>
                             </div>
-                        </div>
+                        </div>  
                         </>
                         )
                     })}

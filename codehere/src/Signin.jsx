@@ -2,6 +2,7 @@ import "./Signin.css"
 import { useNavigate } from "react-router-dom"
 import { useRef, useState } from "react";
 import axios from "axios"
+import api from "./api";
 export default function Signin({setAuth,authenticated}){
     const nav=useNavigate();
     const [email,setEmail]=useState("");
@@ -9,9 +10,11 @@ export default function Signin({setAuth,authenticated}){
     const [showPass,setShowPass]=useState(false);
     const credsref=useRef();
 
+
     async function checkLogin(){
         try{
-        let response=await axios.post("http://localhost:3000/login",{email,pass},{
+        // let response=await axios.post("http://localhost:3000/login",{email,pass},{
+        let response=await api.post("/login",{email,pass},{
             withCredentials:true,
         });
         // console.log(response.data);

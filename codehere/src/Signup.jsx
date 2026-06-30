@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./Signup.css"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import api from "./api";
 export default function Signup(){
     const nav=useNavigate();
     const [userData,setUserData]=useState({userEmail:"",userName:"",password:"",});
@@ -75,7 +76,8 @@ export default function Signup(){
 
     async function postUserData(){
         try{
-        let response=await axios.post("http://localhost:3000/users",userData);
+        // let response=await axios.post("http://localhost:3000/users",userData);
+        let response=await api.post("/users",userData);
         if(response.data.msg==="User already exist"){
             emailref.current.style.display="block";
             setUserExists(true);

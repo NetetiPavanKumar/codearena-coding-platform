@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./AddProblem.css";
 import { useState } from "react";
 import axios from "axios";
+import api from "./api.js";
 export default function AddProblem(){
     const nav =useNavigate();
     const [title,setTitle]=useState("");
@@ -18,7 +19,8 @@ export default function AddProblem(){
     async function addProblem(){
         console.log("TestCases",testcases);
         console.log("Driver Codes", driverCodes);
-        let response=await axios.post("http://localhost:3000/addproblem",{
+        // let response=await axios.post("http://localhost:3000/addproblem",{
+         let response=await api.post("/addproblem",{
             p_prob:prob,
             p_title:title,
             p_category:category,

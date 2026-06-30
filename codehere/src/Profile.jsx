@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import Header from "./Header";
 import "./Profile.css"
 import axios from "axios"
+import api from "./api";
 export default function Profile({isauth,setAuth,currRole,setCurrRole,role}){
 
     const [stats,setStats]=useState("");
     async function getStats(){
-        let response=await axios.get("http://localhost:3000/userstats",{
+        // let response=await axios.get("http://localhost:3000/userstats",{
+        let response=await api.get("/userstats",{
             withCredentials:true,
         })
         console.log("Stats :",response.data)

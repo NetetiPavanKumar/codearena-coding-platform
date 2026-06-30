@@ -4,6 +4,7 @@ import "./Problem.css"
 import { useEffect, useState,useRef } from "react";
 import axios from "axios"
 import Editor from "@monaco-editor/react";
+import api from "./api.js";
 export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
     const params=useParams();
     const nav=useNavigate();
@@ -19,7 +20,8 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
     const [showFlash,setShowFlash]=useState(false);
 
     async function findMatched(){
-        let response=await axios.get(`http://localhost:3000/problems/${id}`,{
+        // let response=await axios.get(`http://localhost:3000/problems/${id}`,{
+        let response=await api.get(`/problems/${id}`,{
             withCredentials:true,
         });
         let matched=response.data.data;
@@ -38,7 +40,8 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
 
 
     async function submitCode(){
-        let response=await axios.post(`http://localhost:3000/submitcode/${matched_prob.p_id}`,{
+        // let response=await axios.post(`http://localhost:3000/submitcode/${matched_prob.p_id}`,{
+        let response=await api.post(`/submitcode/${matched_prob.p_id}`,{
             code,
             language,
         },{
@@ -66,7 +69,8 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
 
 
     async function runCode(){
-        let response=await axios.post(`http://localhost:3000/run/${matched_prob.p_id}`,{
+        // let response=await axios.post(`http://localhost:3000/run/${matched_prob.p_id}`,{
+        let response=await api.post(`/run/${matched_prob.p_id}`,{
             code,
             language
         },{
@@ -94,7 +98,8 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
 
 
     async function saveDraft(draft,language){
-        let response=await axios.post(`http://localhost:3000/autosave/${id}`,{
+        // let response=await axios.post(`http://localhost:3000/autosave/${id}`,{
+        let response=await api.post(`/autosave/${id}`,{
             draft,
             language,
             },{

@@ -2,11 +2,13 @@ import { useEffect,useState } from "react";
 import "./Header.css"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import api from "./api";
 export default function Header({isauth,setAuth,currRole,setCurrRole,role}){
     const nav=useNavigate();
     async function Logout(){
         try{
-            await axios.post("http://localhost:3000/logout",{},{
+            // await axios.post("http://localhost:3000/logout",{},{
+            await api.post("/logout",{},{
                 withCredentials:true,
             })
             setAuth(false)

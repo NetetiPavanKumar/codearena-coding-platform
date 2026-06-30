@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import "./Practice.css"
 import { useNavigate } from "react-router-dom";
+import api from "./api";
 
 export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
     const [currSelected,setSelected]=useState(0);
@@ -14,7 +15,8 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
     const [probs,setProbs]=useState([]);
     const [probs_,setProbs_]=useState([]);
         async function getProblems(){
-                let response=await axios.get("http://localhost:3000/problems",{
+                // let response=await axios.get("http://localhost:3000/problems",{
+                let response=await api.get("/problems",{
                     withCredentials:true,
                 });
                 let res=response.data;
@@ -132,7 +134,9 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
 
     async function deleteProblem(id){
         try{
-        let response=await axios.delete(`http://localhost:3000/deleteproblem/${id}`,{
+        // let response=await axios.delete(`http://localhost:3000/deleteproblem/${id}`,{
+        let response=await api.delete(`/deleteproblem/${id}`,{
+
             withCredentials:true,
         });
         console.log("Deleted Successfully :",response.data);
