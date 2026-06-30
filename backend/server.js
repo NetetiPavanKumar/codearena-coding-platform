@@ -417,7 +417,8 @@ app.post("/submitcode/:ids",authMiddleware,async(req,res)=>{
     for(let test of prob.p_testcases){
         let result=await runCode(code,languages[lang],test.input);
         console.log(result);
-        let output=result.stdout || result.stderr || result.compile_output || "";
+        // let output=result.stdout || result.stderr || result.compile_output || "";
+        let output = (result.stdout ?? result.stderr ?? result.compile_output ?? "").toString().trim();
         output=output.trim();
 
         test.isPublic && user_results.push({
@@ -425,7 +426,8 @@ app.post("/submitcode/:ids",authMiddleware,async(req,res)=>{
             expected:test.output,
             actual:output,
             status:
-            output===test.output.trim()
+            // output===test.output.trim()
+            output.trim() === test.output.toString().trim();
             ?
             "Accepted"
             :
