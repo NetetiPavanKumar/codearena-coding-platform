@@ -154,7 +154,7 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
             </div>
             )
     }
-    
+
     return(
         <>
             <Header isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />
@@ -184,7 +184,7 @@ export default function Problem({isauth,setAuth,currRole,setCurrRole,role}){
             <div id="editor-panel">
                 {/* <input type="text" rows="5" cols="5"></input> */}
                 <div id="editor-head">
-                    <select id="lang" style={{width:"150px",marginLeft:"20px",fontSize:"16px",paddingLeft:"20px"}} onChange={(e)=>{
+                    <select id="lang" style={{width:"150px",marginLeft:"20px",fontSize:"16px",paddingLeft:"20px"}} value={language} onChange={(e)=>{
                         setLanguage(e.target.value);
                         setDraft(e.target.value);
                     }}>
