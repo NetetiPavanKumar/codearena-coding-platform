@@ -59,7 +59,7 @@ export default function Profile({isauth,setAuth,currRole,setCurrRole,role}){
                     </div>
                     <div>
                     <p>{"# "}Completion Rate</p>
-                    <span style={{fontWeight:"bold"}}>{stats?stats.percent:""}%</span>
+                    <span style={{fontWeight:"bold"}}>{stats?stats.percent:0}%</span>
                     </div>
                     <div>
                     {/* <p>{"$ "}Current Streak</p>

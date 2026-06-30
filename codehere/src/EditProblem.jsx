@@ -14,6 +14,7 @@ export default function EditProblem(){
     const [e2,setE2]=useState("");
     const [constr,setConstr]=useState("");
     const [pr,setPr]=useState("");
+    const [driverCodes,setDriverCodes]=useState([{lang:"JavaScript",fntemp:"",drcode:""},{lang:"Python",fntemp:"",drcode:""},{lang:"C",fntemp:"",drcode:""},{lang:"Java",fntemp:"",drcode:""}])
 
     const nav=useNavigate();
 
@@ -33,6 +34,7 @@ export default function EditProblem(){
         setE2(matched.p_e2);
         setConstr(matched.p_constr);
         setTestCases(matched.p_testcases);
+        setDriverCodes(matched.p_driverCodes);
     }
 
     async function updateProblem(){
@@ -46,6 +48,7 @@ export default function EditProblem(){
             p_e2:e2,
             p_constr:constr,
             p_testcases:testcases,
+            p_driverCodes:driverCodes,
         },{withCredentials:true}
         )
         console.log("Problem Updated", response.data)
@@ -186,6 +189,35 @@ Only one valid answer exists.`}></textarea>
                 <div style={{display:"flex",flexDirection:"row",justifyContent:"center",width:"100%",}}><button style={{cursor:"pointer"}} onClick={()=>{
                     addTestCase();
                 }}>➕Add Test Case</button></div>
+                <div className="overall-drivers">
+                    {driverCodes.map((dr,ind)=>{
+                        return(
+                        <>
+                        <div id="one-driver">
+                            <div><label>{dr.lang || "Python"}</label></div>
+                            <div id="drivers">
+                            <div id="driver-code">
+                                <label>Function Template:</label>
+                                <textarea rows={5} cols={43} value={dr.fntemp} onChange={(e)=>{
+                                    let copy=[...driverCodes]
+                                    copy[ind].fntemp=e.target.value;
+                                    setDriverCodes(copy);
+                                }}/>
+                            </div>
+                            <div id="driver-code">
+                                <label>Driver Code:</label>
+                                <textarea rows={5} cols={43} value={dr.drcode} onChange={(e)=>{
+                                    let copy=[...driverCodes];
+                                    copy[ind].drcode=e.target.value;
+                                    setDriverCodes(copy);
+                                }}/>
+                            </div>
+                            </div>
+                        </div>
+                        </>
+                        )
+                    })}
+                </div>
                 <button style={{width:"100%",height:"30px",backgroundColor:"green",cursor:"pointer",color:"white",borderRadius:"5px",}} onClick={()=>{
                     updateProblem();
                     nav("/problems");

@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 
-mongoose.connect("mongodb://localhost:27017/CodeArena").then(()=>{
+mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("MongoDB Connected....");
 })
 
@@ -205,7 +205,7 @@ function authMiddleware(req,res,next){
         })
     }
     try{
-        let decoded=jwt.verify(token,"Pavan Kumar");
+        let decoded=jwt.verify(token,process.env.JWT_SECRET_CODE);
         req.user=decoded;
         next();
     }
@@ -586,8 +586,9 @@ app.get("/userstats",authMiddleware,async(req,res)=>{
             }
         }
     }
-
-    percent=(total_solved/total*100).toFixed(2);
+    console.log(total_solved,total)
+    percent=total>0?(total_solved/total*100).toFixed(2):0;
+    console.log("Percentage :",percent);
 
     res.status(200).json({
         ...user._doc,
