@@ -615,8 +615,8 @@ catch(err){
 app.put("/updateproblem/:id",authMiddleware,authoriseMiddleware,async(req,res)=>{
     try{
     const p_id=req.params.id;
-    let {p_prob,p_title,p_category,p_diff,p_e1,p_e2,p_constr,p_testcases}=req.body;
-    await Problems.findOneAndUpdate({p_id,},{$set:{p_prob,p_title,p_category,p_diff,p_e1,p_e2,p_constr,p_testcases}});
+    let {p_prob,p_title,p_category,p_diff,p_e1,p_e2,p_constr,p_testcases,p_driverCodes}=req.body;
+    await Problems.findOneAndUpdate({p_id,},{$set:{p_prob,p_title,p_category,p_diff,p_e1,p_e2,p_constr,p_testcases,p_driverCodes}});
     res.status(201).json({msg:"Updated Successfully"});
     }
     catch(err){
