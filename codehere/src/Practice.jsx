@@ -160,7 +160,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
     useEffect(()=>{
         console.log("from practice.jsx useeffect")
         paginate(probs,curr_page,5);
-    },[probs])
+    },[])
 
     if(loading){
         return (
