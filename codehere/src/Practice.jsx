@@ -19,10 +19,14 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
             try{
             setLoading(true);
                 // let response=await axios.get("http://localhost:3000/problems",{
+                console.log("Fetching Probs....")
                 let response=await api.get("/problems",{
                     withCredentials:true,
                 });
                 let res=response.data;
+                console.log("STATUS:", response.status);
+                console.log("DATA:", response.data);
+                console.log("IS ARRAY:", Array.isArray(response.data));
                 console.log(res);
                 setProbs(res);
                 setProbs_(res);
@@ -35,9 +39,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
                 setLoading(false);
             }
         }
-            useEffect(()=>{
-                getProblems();
-            },[])
+        
     const [dup_probs,setDups]=useState([]);
 
     function showPageBtns(probs_1,probs_in_page){
@@ -53,7 +55,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
             let dups_page_btns=page_btns.slice(0,3);
             page_btns_dups=dups_page_btns.map((btn)=>{
                 return(
-                    <button id="page-btns" onClick={()=>{
+                    <button id="page-btns" key={btn} onClick={()=>{
                         setCurrPage(btn);
                         paginate(probs_1,btn,fields)
                     }} className={curr_page==btn?"active-green":""}>{btn}</button>
@@ -68,7 +70,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
         else{
             page_btns_dups=page_btns.map((btn)=>{
                 return(
-                        <button id="page-btns" onClick={()=>{
+                        <button id="page-btns" key={btn} onClick={()=>{
                         setCurrPage(btn);
                         paginate(probs_1,btn,fields)
                     }} className={curr_page==btn?"active-green":""}>{btn}</button>
@@ -158,6 +160,10 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
     }
 
     useEffect(()=>{
+        getProblems();
+    },[])
+
+    useEffect(()=>{
         console.log("from practice.jsx useeffect")
         paginate(probs,curr_page,5);
     },[probs])
@@ -214,7 +220,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
                         <button className={currSelected==ind?"bg-green":"practice-buttons"} onClick={()=>{
                             setSelected(ind);
                             filterByLevel(btn);
-                        }} key={ind}>{btn}</button>
+                        }} key={btn}>{btn}</button>
                     )
                 })}
                 </div>
