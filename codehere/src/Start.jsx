@@ -58,11 +58,11 @@ export default function Start(){
                 <Route path="/" element={<App isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />} />
                 <Route path="/signin" element={<Signin setAuth={setAuth} authenticated={authenticated}/>} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/profile/" element={isauth?<Profile isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role}/>:<Signin setAuth={setAuth} />} />
-                <Route path="/problems" element={isauth?<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />:<Signin setAuth={setAuth} />} />
-                <Route path="/problems/:id" element={isauth?<Problem isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />:<Signin setAuth={setAuth} />} />
-                <Route path="/addproblem" element={isauth?(role==="Admin"?<AddProblem />:<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />):<Signin setAuth={setAuth} />} />
-                <Route path="/editproblem/:id" element={isauth?(role==="Admin"?<EditProblem />:<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />):<Signin setAuth={setAuth} />} />
+                <Route path="/profile/" element={isauth?<Profile isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role}/>:<Signin setAuth={setAuth} authenticated={authenticated} />} />
+                <Route path="/problems" element={isauth?<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />:<Signin setAuth={setAuth} authenticated={authenticated} />} />
+                <Route path="/problems/:id" element={isauth?<Problem isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />:<Signin setAuth={setAuth} authenticated={authenticated} />} />
+                <Route path="/addproblem" element={isauth?(role==="Admin"?<AddProblem />:<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />):<Signin setAuth={setAuth} authenticated={authenticated} />} />
+                <Route path="/editproblem/:id" element={isauth?(role==="Admin"?<EditProblem />:<Practice isauth={isauth} setAuth={setAuth} currRole={currRole} setCurrRole={setCurrRole} role={role} />):<Signin setAuth={setAuth} authenticated={authenticated} />} />
             </Routes>
         </BrowserRouter>
     )

@@ -222,8 +222,8 @@ Only one valid answer exists.`}></textarea>
                         )
                     })}
                 </div>
-                <button style={{width:"100%",height:"30px",backgroundColor:"green",cursor:"pointer",color:"white",borderRadius:"5px",}} onClick={()=>{
-                    updateProblem();
+                <button style={{width:"100%",height:"30px",backgroundColor:"green",cursor:"pointer",color:"white",borderRadius:"5px",}} onClick={async()=>{
+                    await updateProblem();
                     nav("/problems");
                 }}>Update Problem</button>
             </div>

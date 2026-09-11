@@ -117,7 +117,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
             return false;
         })
         setProbs_(prs);
-        showPageBtns(prs,fields);
+        // showPageBtns(prs,fields);
         paginate(prs,1,fields);
         
     }
@@ -126,7 +126,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
 
         if(level==="All"){
             setProbs_(probs);
-            showPageBtns(probs,fields);
+            // showPageBtns(probs,fields);
             paginate(probs,1,fields);
             return;
         }
@@ -137,7 +137,7 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
             return false;
         })
         setProbs_(prs);
-        showPageBtns(prs,fields);
+        // showPageBtns(prs,fields);
         paginate(prs,1,fields);
 
     }
@@ -244,12 +244,15 @@ export default function Practice({isauth,setAuth,currRole,setCurrRole,role}){
                             {dup_probs.length!=0?dup_probs.map((prob,ind)=>{
                                 return(<tr key={prob.p_id}>
                                 <td>{prob.status || "False"}</td>
+
                                 <td>{<span style={{cursor:"pointer",color:"rgb(15, 95, 15)"}} onClick={(e)=>{
                                     nav(`/problems/${prob.p_id}`)
                                 }}>{prob.p_title}</span>}</td>
+
                                 <td>{prob.p_category}</td>
                                 <td>{prob.p_diff || "Easy"}</td>
                                 <td>{prob.p_accept}</td>
+                                
                                 {currRole==="Admin"?(<><td><button className="edit-btn" onClick={(e)=>{
                                     nav(`/editproblem/${prob.p_id}`);
                                 }}>Edit</button></td>
