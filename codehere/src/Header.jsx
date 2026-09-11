@@ -34,9 +34,11 @@ export default function Header({isauth,setAuth,currRole,setCurrRole,role}){
                 <p onClick={()=>{
                     nav(`/profile/`)
                 }} style={{cursor:"pointer"}}>Profile</p></>):""}
-                <button className="signin-btn" onClick={()=>{
-                    isauth?Logout():nav("/signin")
+
+                <button className="signin-btn" onClick={async()=>{
+                    isauth?await Logout():nav("/signin")
                 }}>{isauth?"Sign Out":"Sign in"}</button>
+                
                 <select className="role-options" value={currRole} onChange={(e)=>{
                     if(e.target.value==="User"){
                         setCurrRole("User")
