@@ -77,7 +77,9 @@ export default function Signup(){
     async function postUserData(){
         try{
         // let response=await axios.post("http://localhost:3000/users",userData);
-        let response=await api.post("/users",userData);
+        let response=await api.post("/users",userData,{
+            withCredentials:true
+        });
         if(response.data.msg==="User already exist"){
             emailref.current.style.display="block";
             setUserExists(true);
